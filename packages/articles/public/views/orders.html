@@ -1,0 +1,30 @@
+<section data-ng-controller="viewAllOrdersCtrl" data-ng-init="getAllOrders()">
+    <div class="col-md-7">
+        <span class="text-warning"><h3>All Orders</h3></span>
+
+        <div class="table-responsive">
+            <table class="table table-hover" style="margin-bottom: 0px;">
+                <thead>
+                <tr>
+                    <th class="col-xs-1 col-sm-1 text-right">#</th>
+                    <th class="col-xs-5 col-sm-4">Order #</th>
+                    <th class="col-xs-3 col-sm-2 text-right">Created</th>
+                    <th class="col-xs-2 col-sm-1 text-right">Total</th>
+                    <th class="col-xs-1 col-sm-1 text-right"></th>
+                </tr>
+                </thead>
+                <tbody class="selects">
+                <tr ng-repeat="order in allOrders | orderBy:'-created'">
+                    <td class="text-right"><strong>{{$index + 1}}</strong></td>
+                    <td><a data-ng-href="#!/confirmOrder/{{order._id}}">{{order._id | uppercase}}</a></td>
+                    <td class="text-right">{{order.created | date:'mediumDate'}}</td>
+                    <td class="text-right"><i>{{order.total | currency:'CAD$'}}</i></td>
+                    <td><a class="btn" data-ng-click="removeOrder(order);">
+                        <i style="color: #ff8355;" class="glyphicon glyphicon-trash"></i>
+                    </a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,50 @@
+<section data-ng-controller="reviewOrderCtrl" data-ng-init="findOrder()">
+    <div class="col-md-7">
+        <div class="text-right"><h3>Order Confirmation</h3></div>
+        <div class="text-right">Order#: <span class="text-primary">{{order._id | uppercase}}</span>
+        </div>
+        <br>
+
+        <div> Thank you for shopping with us. We'd like to let you know that Ethoca has received your order, and is
+            preparing it for shipment. Your total order amount is <strong> <i>{{order.total | currency:'CAD$'}}</i></strong>.
+        </div>
+        <hr/>
+        <span class="text-warning"><h3>Order Details</h3></span>
+        <span class="text-muted"><small>Placed on {{order.created  | date: 'fullDate'}}</small></span>
+        <div class="table-responsive">
+            <table class="table table-bordered" style="margin-bottom: 0px;">
+                <thead>
+                <tr>
+                    <th class="col-xs-1 col-sm-1 text-right">#</th>
+                    <th class="col-xs-6 col-sm-5">Item</th>
+                    <th class="col-xs-2 col-sm-2 text-right">Price</th>
+                    <th class="col-xs-1 col-sm-1 text-right">Quantity</th>
+                    <th class="col-xs-2 col-sm-3 text-right">Total</th>
+                </tr>
+                </thead>
+                <tbody class="selects">
+                <tr ng-repeat="reviewitem in order.order | orderBy:'title'">
+                    <td class="text-right">{{$index + 1}}</td>
+                    <td>{{reviewitem.title}}</td>
+                    <td class="text-right">{{reviewitem.price | currency:"CAD$"}}</td>
+                    <td class="text-right">{{reviewitem.quantity}}</td>
+                    <td class="text-right">{{reviewitem.quantity * reviewitem.price | currency:"CAD$"}}</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr class="active">
+                    <td colspan="4" class="text-right"><strong>Total:</strong></td>
+                    <td class="text-right">{{order.total | currency:"CAD$"}}</td>
+                </tr>
+                </tfoot>
+            </table>
+<br>
+            <small>   <div class="text-right"> Billing Questions: <span class="text-primary">(999) 999 - 0000</span></div>
+            <div class="text-right">24/7 Sales & Support: <span class="text-primary">1 (800) 999-0000</span></div>
+            <div class="text-right"><a href="mailto:#">customercare@ethoca.com</a></div>
+            </small>
+        </div>
+
+        <hr/>
+    </div>
+</section>

@@ -17,20 +17,25 @@ Articles.register(function(app, auth, database) {
   Articles.routes(app, auth, database);
 
   //We are adding a link to the main menu for all authenticated users
-  Articles.menus.add({
+  /*Articles.menus.add({
     'roles': ['authenticated'],
-    'title': 'Articles',
+    'title': 'View All Items',
     'link': 'all articles'
-  });
+  });*/
   Articles.menus.add({
     'roles': ['authenticated'],
-    'title': 'Create New Article',
+    'title': 'Create New Item',
     'link': 'create article'
   });
+    Articles.menus.add({
+        'roles': ['authenticated'],
+        'title': 'View All Orders',
+        'link': 'view all orders'
+    });
 
   //Articles.aggregateAsset('js','/packages/system/public/services/menus.js', {group:'footer', absolute:true, weight:-9999});
   //Articles.aggregateAsset('js', 'test.js', {group: 'footer', weight: -1});
-
+    Articles.aggregateAsset('js','packages/articles/public/services/selectedItems.js', {group:'footer'});
   /*
     //Uncomment to use. Requires meanio@0.3.7 or above
     // Save settings with callback

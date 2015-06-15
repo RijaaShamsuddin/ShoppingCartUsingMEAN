@@ -12,7 +12,7 @@ module.exports = {
     debug: false
   },
   app: {
-    name: 'MEAN - FullStack JS - Development'
+    name: 'Ethoca Shopping Cart'
   },
   facebook: {
     clientID: 'DEFAULT_APP_ID',

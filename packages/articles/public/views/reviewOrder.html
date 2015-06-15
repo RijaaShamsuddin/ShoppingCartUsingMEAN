@@ -1,0 +1,40 @@
+<section data-ng-controller="reviewOrderCtrl" data-ng-init="calculateTotal()">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-hover" style="margin-bottom: 0px;">
+                <thead>
+                <tr>
+                    <th class="col-xs-7 col-sm-4">Item</th>
+                    <th class="col-sm-3 hidden-xs">Description</th>
+                    <th class="col-xs-2 col-sm-2 text-right">Price</th>
+                    <th class="col-xs-1 col-sm-1 text-right">Quantity</th>
+                    <th class="col-xs-2 col-sm-2 text-right">Total</th>
+                </tr>
+                </thead>
+                <tbody class="selects">
+                <tr ng-repeat="reviewitem in reviewOritems | orderBy: 'title'">
+                    <td>{{reviewitem.title}}</td>
+                    <td class="hidden-xs">{{reviewitem.content}}</td>
+                    <td class="text-right">{{reviewitem.price | currency:"CAD$"}}</td>
+                    <td class="text-right">{{reviewitem.quantity}}</td>
+                    <td class="text-right">{{reviewitem.quantity * reviewitem.price | currency:"CAD$"}}</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr class="active">
+                    <td colspan="3" class="text-right">
+                        <button class="btn btn-sm btn-danger" ng-click="goToEditOrder()">Edit Order</button>
+                    </td>
+                    <td class="text-right">
+                        <button class="btn btn-sm btn-success" ng-click="createOrder()">Confirm Order</button>
+                    </td>
+                    <td class="text-right">
+                        {{reviewOritems.total |  currency:"CAD$"}}
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</section>
+
